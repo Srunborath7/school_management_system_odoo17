@@ -6,7 +6,7 @@ class AcademicProgram(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     name = fields.Char(string="Name")
     code = fields.Char(string="Code")
-    department_ids = fields.Many2one('school.department', string="Departments" , required=True, tracking=True)
+    department_ids = fields.Many2one('school.department', string="Departments" , tracking=True)
     academic_year_ids = fields.Many2one('school.academic.year',string="Academic Year",required=True, tracking=True)
     duration = fields.Integer(string="Duration (Years)")
     total_credits = fields.Integer(string="Total Credits", default=3)

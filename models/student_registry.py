@@ -34,11 +34,6 @@ class StudentRegistry(models.Model):
     theme_secondary = fields.Char(compute='_compute_theme_colors')
     text_color_primary= fields.Char(compute='_compute_theme_colors')
     text_color_secondary= fields.Char(compute='_compute_theme_colors')
-    # created_by = fields.Many2one(
-    #     'res.users',
-    #     default=lambda self: self.env.user,
-    #     readonly=True
-    # )
 
     def action_enroll(self):
         self.write({'status': 'enrolled'})
