@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="hello_world_tree" model="ir.ui.view">
+        <field name="name">hello.world.tree</field>
+        <field name="model">hello.world</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+   <record id="action_hello_world" model="ir.actions.act_window">
+        <field name="name">Hello World</field>
+        <field name="res_model">hello.world</field>
+        <field name="view_mode">tree,form</field>
+   </record>
+
+</odoo>

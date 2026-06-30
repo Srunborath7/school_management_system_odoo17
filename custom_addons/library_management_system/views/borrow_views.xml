@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_library_borrow_tree" model="ir.ui.view">
+        <field name="name">library.borrow.tree</field>
+        <field name="model">library.borrow</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference"/>
+                <field name="student_id"/>
+                <field name="book_id"/>
+                <field name="qty"/>
+                <field name="borrow_date"/>
+                <field name="due_date"/>
+                <field name="display_status"/>
+                <field name="return_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_library_borrow_form" model="ir.ui.view">
+        <field name="name">library.borrow.form</field>
+        <field name="model">library.borrow</field>
+        <field name="arch" type="xml">
+            <form string="Borrow Book">
+                <sheet>
+                    <group>
+                        <field name="borrow_count" readonly="1"/>
+                    </group>
+                    <header>
+
+                        <button name="action_return_book"
+                                string="Return Book"
+                                type="object"
+                                class="btn-primary"
+                                invisible="state == 'returned'"/>
+
+                        <field name="state"
+                               widget="statusbar"/>
+
+                    </header>
+
+                    <!-- Title -->
+                    <div class="oe_title">
+                        <h1>
+                            <field name="reference"
+                                   readonly="1"/>
+                        </h1>
+                    </div>
+
+                    <group>
+
+                        <group>
+                            <field name="student_id"/>
+                            <field name="book_id"/>
+                            <field name="qty"/>
+                            <field name="state"/>
+                        </group>
+
+                        <group>
+                            <field name="borrow_date"/>
+                            <field name="due_date"/>
+                            <field name="return_date"/>
+                            <field name="display_status"
+                                   readonly="1"/>
+                        </group>
+
+                    </group>
+
+                    <notebook>
+
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_borrow_search" model="ir.ui.view">
+        <field name="name">library.borrow.search</field>
+        <field name="model">library.borrow</field>
+        <field name="arch" type="xml">
+            <search string="Search Borrow Books">
+
+                <field name="student_id"/>
+                <field name="book_id"/>
+
+                <filter name="qty_gt_1"
+                        string="Qty > 1"
+                        domain="[('qty','>',1)]"/>
+
+                <group expand="0" string="Group By">
+
+                    <filter name="group_student"
+                            string="Student"
+                            context="{'group_by':'student_id'}"/>
+
+                    <filter name="group_book"
+                            string="Book"
+                            context="{'group_by':'book_id'}"/>
+
+                </group>
+
+                <searchpanel>
+                    <field name="student_id"
+                           enable_counters="1"/>
+                    <field name="book_id"
+                           enable_counters="1"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+    <record id="action_library_borrow" model="ir.actions.act_window">
+        <field name="name">Borrow Books</field>
+        <field name="res_model">library.borrow</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <menuitem
+        id="menu_library_root"
+        name="Library Management"
+        sequence="35"/>
+
+    <menuitem
+        id="menu_student"
+        name="Students"
+        parent="menu_library_root"
+        action="action_library_students"
+        groups="library_management_system.group_student_library_admin"
+        sequence="1"/>
+    <menuitem id="menu_hello"
+          name="Hello"
+          parent="menu_library_root"
+          action="action_hello_world"/>
+    <menuitem
+            id="menu_library"
+            name="Library"
+            parent="menu_library_root"
+            groups="library_management_system.group_student_library_admin,library_management_system.group_student_library_officer"
+            sequence="2"
+    />
+    <menuitem
+            id="menu_author"
+            name="Author"
+            parent="menu_library_root"
+            action="action_author"
+            groups="library_management_system.group_student_library_admin,library_management_system.group_student_library_officer"
+            sequence="2"
+    />
+     <menuitem
+            id="menu_library_borrow"
+            name="Borrow Book"
+            parent="menu_library"
+            action="action_library_borrow"
+            groups="library_management_system.group_student_library_admin,library_management_system.group_student_library_officer"
+            sequence="1"
+    />
+     <menuitem
+            id="menu_library_buy_book"
+            name="Buy Book"
+            parent="menu_library"
+            action="action_buy_book"
+            groups="library_management_system.group_student_library_admin,library_management_system.group_student_library_officer"
+            sequence="2"
+    />
+    <menuitem
+            id="menu_library_return"
+            name="Return Book"
+            parent="menu_library"
+            sequence="2"
+    />
+    <menuitem
+        id="menu_management_book"
+        name="Book Management"
+        parent="menu_library_root"
+        groups="library_management_system.group_student_library_admin,library_management_system.group_student_library_officer"
+        sequence="3"/>
+
+    <menuitem
+        id="menu_book"
+        name="Books"
+        parent="menu_management_book"
+        groups="library_management_system.group_student_library_admin,library_management_system.group_student_library_officer"
+        action="action_book"
+        sequence="1"/>
+
+    <menuitem
+        id="menu_category"
+        name="Categories"
+        parent="menu_management_book"
+        action="action_book_category"
+        groups="library_management_system.group_student_library_admin,library_management_system.group_student_library_officer"
+        sequence="2"/>
+    <menuitem id="menu_library_tag"
+          name="Book Tags"
+          parent="menu_management_book"
+          action="action_book_tag"
+              groups="library_management_system.group_student_library_admin"
+          sequence="30"/>
+
+</odoo>

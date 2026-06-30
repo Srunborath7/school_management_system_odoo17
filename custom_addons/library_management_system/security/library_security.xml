@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="module_category_student_library" model="ir.module.category">
+        <field name="name">Student Library</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <!-- Student Officer -->
+    <record id="group_student_library_officer" model="res.groups">
+        <field name="name">Student Officer</field>
+        <field name="category_id"
+               ref="library_management_system.module_category_student_library"/>
+        <field name="implied_ids"
+               eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <!-- Student Admin -->
+    <record id="group_student_library_admin" model="res.groups">
+        <field name="name">Student Admin</field>
+        <field name="category_id"
+               ref="library_management_system.module_category_student_library"/>
+        <field name="implied_ids"
+               eval="[(4, ref('library_management_system.group_student_library_officer'))]"/>
+    </record>
+
+</odoo>

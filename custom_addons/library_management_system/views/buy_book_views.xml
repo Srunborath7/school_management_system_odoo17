@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_library_buy_book_tree" model="ir.ui.view">
+        <field name="name">library.buybooks.tree</field>
+        <field name="model">library.buybooks</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="student_ids"/>
+                <field name="book_ids"/>
+                <field name="qty"/>
+                <field name="price"/>
+                <field name="note"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_library_book_form" model="ir.ui.view">
+        <field name="name">library.buybooks.form</field>
+        <field name="model">library.buybooks</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="student_ids"/>
+                        <field name="book_ids"/>
+                        <field name="qty"/>
+                        <field name="price"/>
+                    </group>
+                    <h3>
+                        <field name="total" readonly="1"/>
+                    </h3>
+                   <notebook>
+                        <page string="Note">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_buybooks_search" model="ir.ui.view">
+        <field name="name">library.buybooks.search</field>
+        <field name="model">library.buybooks</field>
+        <field name="arch" type="xml">
+            <search string="Search Buy Books">
+
+                <field name="student_ids"/>
+                <field name="book_ids"/>
+
+                <filter name="qty_gt_1"
+                        string="Qty > 1"
+                        domain="[('qty','>',1)]"/>
+
+                <group expand="0" string="Group By">
+                    <filter name="group_student"
+                            string="Student"
+                            context="{'group_by':'student_ids'}"/>
+
+                    <filter name="group_book"
+                            string="Book"
+                            context="{'group_by':'book_ids'}"/>
+                </group>
+
+                <searchpanel>
+                    <field name="book_ids" enable_counters="1"/>
+                    <field name="student_ids" enable_counters="1"/>
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+    <record id="action_buy_book" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="res_model">library.buybooks</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

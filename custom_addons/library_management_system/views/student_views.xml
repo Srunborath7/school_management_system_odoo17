@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_students_tree" model="ir.ui.view">
+        <field name="name">library.students.tree</field>
+        <field name="model">library.students</field>
+        <field name="arch" type="xml">
+            <tree string="Students" decoration-danger="status == 'suspend'">
+                <field name="card_id"/>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="email"/>
+                <field name="phone" optional="hide"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_students_form" model="ir.ui.view">
+        <field name="name">library.students.form</field>
+        <field name="model">library.students</field>
+        <field name="arch" type="xml">
+            <form string="Student">
+                <button type="object"
+                        name="action_view_borrows"
+                        class="oe_stat_button"
+                        icon="fa-book">
+
+                    <field name="borrow_count"
+                           widget="statinfo"
+                           string="Borrows"/>
+                </button>
+                <sheet>
+                    <group>
+                        <div style="display:flex;gap:10px;width:400px">
+                            <h2>Card ID</h2>
+                            <h2>
+                               <field name="card_id" string="Card ID" style="width:100%"/>
+                            </h2>
+                        </div>
+                    </group>
+
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="gender"/>
+                            <field name="email"/>
+                        </group>
+
+                        <group>
+                            <field name="phone"/>
+                            <field name="status"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Address">
+                            <field name="address" nolabel="1"
+                                   style="height:200px; width:100%;"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_students_search" model="ir.ui.view">
+        <field name="name">library.students.search</field>
+        <field name="model">library.students</field>
+        <field name="arch" type="xml">
+            <search string="Search Students">
+
+                <field name="card_id"/>
+                <field name="name"/>
+                <field name="email"/>
+
+                <filter name="male"
+                        string="Male"
+                        domain="[('gender','=','male')]"/>
+
+                <filter name="female"
+                        string="Female"
+                        domain="[('gender','=','female')]"/>
+                <filter string="Status" name="group_status" context="{'group_by':'status'}"/>
+                <searchpanel>
+                    <field name="gender" string="Gender" enable_counters="1"/>
+                     <field name="status" string="Status" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+    <record id="view_student_kanban" model="ir.ui.view">
+        <field name="name">library.students.kanban</field>
+        <field name="model">library.students</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="card_id"/>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="status"/>
+                <template>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <p><field name="card_id"/></p>
+                            <h3>
+                                <field name="name"/>
+                            </h3>
+                            <div>
+                                <span>Gender: </span>
+                                <strong><field name="gender"/> </strong>
+                            </div>
+                            <div>
+                                <span>Email: </span>
+                                <strong><field name="email"/> </strong>
+                            </div>
+                            <div>
+                                <span>Phone: </span>
+                                <strong><field name="phone"/> </strong>
+                            </div>
+                            <div>
+                                <span>Status: </span>
+                                <strong><field name="status"/> </strong>
+                            </div>
+                        </div>
+
+                    </t>
+                </template>
+            </kanban>
+        </field>
+    </record>
+    <record id="action_library_students" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">library.students</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+</odoo>
