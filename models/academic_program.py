@@ -4,6 +4,7 @@ class AcademicProgram(models.Model):
     _name = 'school.academic.program'
     _description = 'Academic Program'
     _inherit = ['mail.thread', 'mail.activity.mixin']
+
     name = fields.Char(string="Name")
     code = fields.Char(string="Code")
     department_ids = fields.Many2one('school.department', string="Departments" , tracking=True)

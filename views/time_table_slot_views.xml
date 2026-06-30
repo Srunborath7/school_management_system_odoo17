@@ -16,44 +16,40 @@
             </tree>
         </field>
     </record>
+
     <record id="view_timetable_slot_form" model="ir.ui.view">
         <field name="name">school.timetable.slot.form</field>
         <field name="model">school.timetable.slot</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
-
                     <group>
                         <field name="name" readonly="1"/>
-                        <field name="day_of_week"/>
+                        <field name="day_of_week" placeholder="select day..."/>
                     </group>
-
                     <group>
-                        <field name="start_time"/>
-                        <field name="end_time"/>
+                        <field name="start_time" placeholder="Select start time..."/>
+                        <field name="end_time" placeholder="Select end time..."/>
                         <field name="duration" readonly="1"/>
                     </group>
-
                     <group string="Academic Info">
-                        <field name="academic_year_id"/>
-                        <field name="program_id"/>
-                        <field name="class_id"/>
+                        <field name="academic_year_id" placeholder="Select academic year..."/>
+                        <field name="program_id" placeholder="Select academic program..."/>
+                        <field name="class_id" placeholder="Select class..."/>
                     </group>
-
                     <group string="Schedule Info">
-                        <field name="subject_id"/>
-                        <field name="teacher_id"/>
+                        <field name="subject_id" placeholder="Select subject..."/>
+                        <field name="teacher_id" placeholder="Select teacher..."/>
                     </group>
-
                     <group>
                         <field name="is_active"/>
                         <field name="color" widget="color_picker"/>
                     </group>
-
                 </sheet>
             </form>
         </field>
     </record>
+
     <record id="view_timetable_slot_calendar" model="ir.ui.view">
         <field name="name">school.timetable.slot.calendar</field>
         <field name="model">school.timetable.slot</field>
@@ -66,6 +62,7 @@
             </calendar>
         </field>
     </record>
+
     <record id="action_timetable_slot" model="ir.actions.act_window">
         <field name="name">Timetable Slots</field>
         <field name="res_model">school.timetable.slot</field>

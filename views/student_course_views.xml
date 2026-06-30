@@ -12,6 +12,7 @@
             </tree>
         </field>
     </record>
+
     <record id="view_school_course_form" model="ir.ui.view">
         <field name="name">school.course.form</field>
         <field name="model">school.course</field>
@@ -19,9 +20,9 @@
             <form string="Course">
                 <sheet>
                     <group>
-                        <field name="name"/>
+                        <field name="name" placeholder="Set a course name..."/>
                         <field name="creation_date"/>
-                        <field name="description"/>
+                        <field name="description" placeholder="Set your description..."/>
                     </group>
                 </sheet>
                 <div class="oe_chatter">
@@ -32,6 +33,7 @@
             </form>
         </field>
     </record>
+
     <record id="view_school_course_kanban" model="ir.ui.view">
         <field name="name">school.course.kanban</field>
         <field name="model">school.course</field>
@@ -46,12 +48,8 @@
                             <div class="card-header text-center text-white py-4"
                                  style="background: linear-gradient(135deg,#2d358e,#4f5bd5);border-radius: 24px 24px 0 0;box-shadow: 0 4px 12px rgba(0,0,0,.15);">
                                 <i class="fa fa-book fa-3x mb-2" title="Book"/>
-                                <h4 class="mb-0 fw-bold text-white">
-                                    <field name="name"/>
-                                </h4>
-                                <small class="opacity-75">
-                                    Course Information
-                                </small>
+                                <h4 class="mb-0 fw-bold text-white"><field name="name"/></h4>
+                                <small class="opacity-75">Course Information</small>
                             </div>
                             <div class="card-body">
                                 <div class="mb-3 text-end text-white">
@@ -81,17 +79,16 @@
                                     School Management System
                                 </small>
                             </div>
-
                         </div>
                     </t>
                 </templates>
             </kanban>
         </field>
     </record>
+
     <record id="action_school_course" model="ir.actions.act_window">
         <field name="name">Course</field>
         <field name="res_model">school.course</field>
         <field name="view_mode">kanban,tree,form</field>
     </record>
-
 </odoo>

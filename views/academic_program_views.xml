@@ -16,16 +16,15 @@
             </tree>
         </field>
     </record>
+
     <record id="view_school_adcademic_programs_form" model="ir.ui.view">
         <field name="name">school.academic.program.form</field>
         <field name="model">school.academic.program</field>
         <field name="arch" type="xml">
             <form string="Academic Program">
                 <header>
-                    <button name="action_active" type="object" string="Active" class="oe_highlight"
-                            invisible="status != 'draft'"/>
-                    <button name="action_completed" type="object" string="Complete" class="oe_highlight"
-                            invisible="status != 'active'"/>
+                    <button name="action_active" type="object" string="Active" class="oe_highlight" invisible="status != 'draft'"/>
+                    <button name="action_completed" type="object" string="Complete" class="oe_highlight" invisible="status != 'active'"/>
                     <button name="action_inactive" type="object" string="Inactive" invisible="status == 'inactive'"/>
                     <button name="action_closed" type="object" string="Close" invisible="status != 'completed'"/>
                     <button name="action_reset_draft" type="object" string="Reset" invisible="status == 'draft'"/>
@@ -33,12 +32,12 @@
                 </header>
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="code"/>
-                        <field name="department_ids"/>
-                        <field name="academic_year_ids"/>
-                        <field name="duration"/>
-                        <field name="total_credits"/>
+                        <field name="name" placeholder="Set a academic program name..."/>
+                        <field name="code" placeholder="Set a code of academic program..."/>
+                        <field name="department_ids" placeholder="select department..."/>
+                        <field name="academic_year_ids" placeholder="select academic year..."/>
+                        <field name="duration" placeholder="Set a duration of academic program..."/>
+                        <field name="total_credits" placeholder="Set a total credit..."/>
                     </group>
                     <notebook>
                         <page string="Description">
@@ -54,6 +53,7 @@
             </form>
         </field>
     </record>
+
     <record id="view_academic_programs_kanban" model="ir.ui.view">
         <field name="name">school.academic.program.kanban</field>
         <field name="model">school.academic.program</field>
@@ -119,8 +119,7 @@
                             </div>
                             <div class="card-footer bg-light text-center">
                                 <small class="text-muted">
-                                    <i class="fa fa-graduation-cap me-1" title="Graduation"/>
-                                    School Management System
+                                    <i class="fa fa-graduation-cap me-1" title="Graduation"/>School Management System
                                 </small>
                             </div>
                         </div>
@@ -129,6 +128,7 @@
             </kanban>
         </field>
     </record>
+
     <record id="view_academic_programs_search" model="ir.ui.view">
         <field name="name">school.academic.program.search</field>
         <field name="model">school.academic.program</field>
@@ -155,6 +155,7 @@
             </search>
         </field>
     </record>
+
     <record id="action_school_acadamic_programs" model="ir.actions.act_window">
         <field name="name">Academic Program</field>
         <field name="res_model">school.academic.program</field>
